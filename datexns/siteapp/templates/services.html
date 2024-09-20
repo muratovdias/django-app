@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block dopcss %}
+<link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock dopcss %}
+
+{% block dop_nav %}
+    <div class="navigator">
+        <ul class="navigator_body">
+            {% for el in categories %}
+                <li class="navigator_items">
+                    <a href="{% url 'categoris' el.slug %}" class="navigator_link">{{ el.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock dop_nav %}
+
+{% block content %}
+<section class="text_about">
+				<h2 class="text_about_h2">Нанесение логотипа:</h2><br>
+				<p class="text_about_h2">Так же наша компания занимается нанесением логотипа на любую поверхность</p>
+				<div class="kartochki">
+					<div class="kartochka">
+						<div class="kartochka_foto"><img src="{% static 'img/nanesenie_logotipa_.jpg' %}" alt=""></div>
+					</div>
+					<div class="kartochka">
+						<div class="kartochka_foto"><img src="{% static 'img/nanesenie_logotipa_4.jpg' %}" alt=""></div>
+					</div>
+					<div class="kartochka">
+						<div class="kartochka_foto"><img src="{% static 'img/nanesenie_logotipa_2.jpg' %}" alt=""></div>
+					</div>
+					<div class="kartochka">
+						<div class="kartochka_foto"><img src="{% static 'img/nanesenie_logotipa_3.jpg' %}" alt=""></div>
+					</div>
+				</div>
+
+			</section>
+
+{% endblock content %}
+
+{% block slider2 %}
+{% endblock slider2 %}

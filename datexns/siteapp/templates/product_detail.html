@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block dopcss %}
+<link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+{% endblock dopcss %}
+
+{% block dop_nav %}
+    <div class="navigator">
+        <ul class="navigator_body">
+            {% for el in categories %}
+                <li class="navigator_items">
+                    <a href="{% url 'categoris' el.slug %}" class="navigator_link">{{ el.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock dop_nav %}
+
+{% block content %}
+<div class="container_card">
+    <div class="card_body">
+        <div class="img_card">
+            <img src="{{ product.image.url }}" alt="">
+        </div>
+        <div class="card_opisanie">
+            <h2 class="zagolovok_h2"> {{product.title}}:</h2>
+            <div class="opisanie_body">
+                <p class="p_h">Описание:</p>
+                <p class="p_body">{{product.description}}</p>
+            </div>
+            <div class="harakteristiki_body">
+                <p class="p_h">Характеристики:</p>
+                <p class="p_body">{{product.description2}}</p>
+            </div>
+            <p class="price">Цена {{product.price}} тг.</p>
+            <p class="svyaz">Для заказа товара свяжитесь с менеджером…</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block slider2 %}
+{% endblock slider2 %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block dopcss %}
+<link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+{% endblock dopcss %}
+
+{% block dop_nav %}
+    <div class="navigator">
+        <ul class="navigator_body">
+            {% for el in categories %}
+                {% if el.pk == cat_selected %}
+                    <li class="navigator_items">
+                        <a href="{% url 'categoris' el.slug %}" class="navigator_link _active">{{ el.name }}</a>
+                    </li>
+                {% else %}
+                    <li class="navigator_items">
+                        <a href="{% url 'categoris' el.slug %}" class="navigator_link">{{ el.name }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock dop_nav %}
+
+{% block content %}
+<div class="container_cards">
+    <div class="container_line">
+        <div class="kartochki">
+            <div class="zagolovok">
+                <h2 class="zagolovok_h2">{{ categoriya }} </h2>
+                <span class="podcherk"></span>
+            </div>
+            <div class="kard_obch">
+                {% for el in products %}
+                <div class="kard">
+                    <div class="kard_img"><img src="{{ el.image.url }}" alt="" class="img_kard_img"></div>
+                    <h3 class="kard_h3">{{ el.title }}</h3>
+                    <p class="kard_opis">{{el.description | truncatewords:10 }}</p>
+                    <p class="kard_price">Цена: {{ el.price }} тг.</p>
+                    <div class="kard_btn"><a href="{% url 'product' el.slug %}"><button class="btn_kard_btn" >Подробнее...</button></a></div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block slider2 %}
+{% endblock slider2 %}
